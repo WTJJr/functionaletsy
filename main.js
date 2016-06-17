@@ -23,15 +23,21 @@ document.querySelector("#answer1").innerHTML = "The average price is $"+answer1;
 //   Hand Painted Colorful Feather Glass
 
 //Process: (1) Write an if conditional to rule prices as btw $14 and $18 or not.
-//(2) Write a function or use HOF that creates an array to filter through the data and collect the objects containing prices between $14 and $18.
-//(3) Add function that returns names of those objects into an array.
-//(4) Reduce the array to a string. (5) Inject string into the appropriate DOM node in index.html using document.querySelector().
+//(2) Write a function or use HOF that creates an array to filter through the data and collect the titles of objects containing prices between $14 and $18.
+//(3) Reduce the array to a string. (4) Inject string into the appropriate DOM node in index.html using document.querySelector().
 
-var priceFilter = function(items) {
-	return items.filter(function(object) {
+//note: .filter() failed me, because it only returns the same data type that it receives. As a result, I kept getting objects back instead of
+//titles. So, I'm switching .filter to .map. Note2: .map returned a lot of "undefined" inputs in the array. Switching to .forEach().
+
+var filterPrices = function(items) {
+	var filteredPrices = [];
+	items.forEach(function(object) {
 		if (14 <= object.price && object.price <= 18) {
-		return(object);
-		}
+		filteredPrices.push(object.title);
+		};
 	});
+	var answer2 = filteredPrices.reduce(function(a,b) {
+		return a + ", " + b;
+	});
+	return answer2;
 };
-	
