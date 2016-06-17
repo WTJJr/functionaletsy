@@ -89,5 +89,5 @@ var answer4withtags = "<ul class=\"listheading\">Items made of wood:"+answer4+"<
 
 document.querySelector("#answer4").innerHTML = answer4withtags;
 
-
+// Which items are made of eight or more materials? Display the name, number of items and the items it is made of.
 
