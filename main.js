@@ -11,6 +11,6 @@ var avgPrice = function (items) {
 	return sums/items.length
 };
 
-var answer1 = "The average price is: $"+ avgPrice(items);
+var answer1 = avgPrice(items).toFixed(2);  // Rounds result to nearest hundredth.
 
-document.querySelector("#answer1").innerHTML = answer1;
+document.querySelector("#answer1").innerHTML = "The average price is $"+answer1;
