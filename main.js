@@ -41,3 +41,53 @@ var filterPrices = function(items) {
 	});
 	return answer2;
 };
+
+var answer2 = filterPrices(items);
+
+document.querySelector("#answer2").innerHTML = answer2;
+
+
+// Question 3: Which item has a "GBP" currency code? Display it's name and price.
+// 1970s Schlitz Malt Liquor Glass Beer Pitcher costs £18
+
+var filterCurrency = function(items) {
+	var filteredCurrencies = [];
+	items.forEach(function(object) {
+		if (object.currency_code == "GBP") {
+		filteredCurrencies.push(object.title);
+		filteredCurrencies.push(object.price);
+		};
+	});
+	var answer3 = filteredCurrencies.reduce(function(a,b) {
+		return a + " costs &pound" + b;
+	});
+	return answer3;
+};
+
+var answer3 = filterCurrency(items);
+
+document.querySelector("#answer3").innerHTML = answer3;
+
+// Question 4: Display a list of all items who are made of wood.
+//Note: materials used to make items are inside of an array stored in the property "materials".
+
+var filterWoodItems = function(items) {
+	var filteredItems = [];
+	items.forEach(function(object) {
+		if (object.materials.includes("wood")) {
+		filteredItems.push("<li>"+object.title+"</li>");
+		};
+	});
+	var answer4 = filteredItems.reduce(function(a,b) {
+		return a + b;
+	});
+	return answer4;
+};
+
+var answer4 = filterWoodItems(items);
+var answer4withtags = "<ul class=\"listheading\">Items made of wood:"+answer4+"</ul>";
+
+document.querySelector("#answer4").innerHTML = answer4withtags;
+
+
+
