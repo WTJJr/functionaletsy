@@ -1,0 +1,23 @@
+body {
+	width: 1100px;
+}
+
+.banner {
+	height: 130px;
+}
+
+h3 {
+	text-align: center;
+}
+
+.footercontainer {
+	background: #4B484E;
+	height: 118px;
+}
+
+.footer {
+	color: #A6A3A9;
+	font-family: arial, sans-serif;
+	text-align: center;
+	padding-top: 80px;
+}
