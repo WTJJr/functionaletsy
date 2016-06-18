@@ -37,14 +37,14 @@ var filterPrices = function(items) {
 		};
 	});
 	var answer2 = filteredPrices.reduce(function(a,b) {
-		return a + ", " + b;
+		return a + " * " + b;
 	});
 	return answer2;
 };
 
 var answer2 = filterPrices(items);
 
-document.querySelector("#answer2").innerHTML = answer2;
+document.querySelector("#answer2").innerHTML = "<p class=\"ans2header\">These items cost between $14 and $18:</p>"+answer2;
 
 
 // Question 3: Which item has a "GBP" currency code? Display it's name and price.
@@ -139,8 +139,8 @@ var filterMaterials = function (items) {
 		ulNode.innerHTML = objParts[x] + taggedMaterialsArrays[x].join('');
 		answer5div.appendChild(ulNode);
 	};															//This for loop creates two ul elements containing titles and number of materials
-	//AND their corresponding taggedMaterialsArrays array-turned-string to each ul element,
-	//and then injects it into the answer 5 div.
+	//AND their corresponding taggedMaterialsArrays array-turned-string to each ul element.
+	//It then injects it into the answer 5 div.
 };
 filterMaterials(items); //calls the function.
 
