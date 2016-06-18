@@ -113,7 +113,7 @@ var filterMaterials = function (items) {
 	var filteredObjs = objectFilter(items);
 	var objPartsMapper = function (filteredObjs) {
 		return filteredObjs.map(function(object) {
-			return "<ul class=\"objTitles\">"+object.title + " has " + object.materials.length + " materials:</ul>";
+			return object.title + " has " + object.materials.length + " materials:";
 		})
 	}
 	var objParts = objPartsMapper(filteredObjs);                 //At this point, I have an array of 2 separate ul elements with the titles and number of materials inside.
@@ -124,33 +124,24 @@ var filterMaterials = function (items) {
 	}
 	var filteredMaterialsArrays = objMaterialsMapper(filteredObjs); //At this point, I have another array containing the materials array of each filtered object.
 	var	arrayOfFilteredMaterialsTagger = function(filteredMaterialsArrays) {
-			return filteredMaterialsArrays.map(function(array){
-				return array.map(function(item){
-					return "<li>" + item + "</li>";
-				});
+		return filteredMaterialsArrays.map(function(array){
+			return array.map(function(item){
+				return "<li>" + item + "</li>";
 			});
+		});
 	};
-	var taggedMaterialsArrays = arrayOfFilteredMaterialsTagger(filteredMaterialsArrays); //At this point, I have one array containing the
-	//materials arrays of each filtered object with all array items contained within <li> tags.
-	/*
+	var taggedMaterialsArrays = arrayOfFilteredMaterialsTagger(filteredMaterialsArrays);
+	//At this point, I have one array containing the materials arrays of each 
+	//filtered object with all array items contained within <li> tags.
+
 	var answer5div = document.querySelector("#answer5");
-	for (var x=0; x <objParts.length, x++) {
+	for (var x=0; x <objParts.length; x++) {
 		var ulNode = document.createElement("ul");
-		ulNode.textContent = objParts[x];
+		ulNode.innerHTML = objParts[x] + taggedMaterialsArrays[x].join('');
 		answer5div.appendChild(ulNode);
-	}															//At this point, I have created two ul elements containing titles and number of materials in the answer 5 div.
-	var answer5Titles = document.querySelector(".objTitles");
-	for (var x=0; x < )
-	var objPartsTitles = objParts.reduce(function(a,b) {
-		return a + b;
-	});
-	var answer5 = document.querySelector("#answer5");
-	answer5.innerHTML = objPartsTitles;
-	var answer5titles = document.querySelector(".objTitles")
-	for(var count = 0; count < filteredObjs.length; count++) {
-		var liNode = document.createElement("li");
-		liNode.textContent = "_";
-		objTitles.appendChild(liNode);
-//	};)
-}
-*/
+	};															//This for loop creates two ul elements containing titles and number of materials
+	//AND adds the corresponding taggedMaterialsArrays array to each ul element, having already joined the array together as a string,
+	//and then injects it into the answer 5 div.
+};
+
+filterMaterials(items); //calls the function.
