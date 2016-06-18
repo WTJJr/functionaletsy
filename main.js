@@ -91,3 +91,43 @@ document.querySelector("#answer4").innerHTML = answer4withtags;
 
 // Which items are made of eight or more materials? Display the name, number of items and the items it is made of.
 
+// Qty of 2 Groomsmen Gift - Stainless Steel Personalized Bottle Opener - NO Capcatcher has 9 materials:
+//   wall mount bottle opener
+//   wedding
+//   man cave
+//   christmas gift
+//   guy gift
+//   fathers day
+//   home bar
+//   beer
+//   bar
+
+var filterMaterials = function (items) {
+	var objectFilter = function (items) {
+		return items.filter(function(object) {
+			if(object.materials.length >= 8) {
+				return object;
+			}
+		});
+	};	
+	var filteredObjs = objectFilter(items);
+	var objPartsMapper = function (filteredObjs) {
+		return filteredObjs.map(function(object) {
+			return "<ul class=\"objTitles\">"+object.title + " has " + object.materials.length + " materials:</ul>";
+		})
+	}
+	var objParts = objPartsMapper(filteredObjs);                 //At this point, I have an array of 2 separate ul elements with the titles inside.
+	var answer5div = document.querySelector("#answer5");
+
+	var objPartsTitles = objParts.reduce(function(a,b) {
+		return a + b;
+	});
+	var answer5 = document.querySelector("#answer5");
+	answer5.innerHTML = objPartsTitles;
+	var answer5titles = document.querySelector(".objTitles")
+	for(var count = 0; count < filteredObjs.length; count++) {
+		var liNode = document.createElement("li");
+		liNode.textContent = "_";
+		objTitles.appendChild(liNode);
+//	};)
+}
