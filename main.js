@@ -117,13 +117,30 @@ var filterMaterials = function (items) {
 		})
 	}
 	var objParts = objPartsMapper(filteredObjs);                 //At this point, I have an array of 2 separate ul elements with the titles and number of materials inside.
+	var objMaterialsMapper = function(filteredObjs) {
+		return filteredObjs.map(function(object){
+			return object.materials;
+		})
+	}
+	var filteredMaterialsArrays = objMaterialsMapper(filteredObjs); //At this point, I have another array containing the materials array of each filtered object.
+	var	arrayOfFilteredMaterialsTagger = function(filteredMaterialsArrays) {
+			return filteredMaterialsArrays.map(function(array){
+				return array.map(function(item){
+					return "<li>" + item + "</li>";
+				});
+			});
+	};
+	var taggedMaterialsArrays = arrayOfFilteredMaterialsTagger(filteredMaterialsArrays); //At this point, I have one array containing the
+	//materials arrays of each filtered object with all array items contained within <li> tags.
+	/*
 	var answer5div = document.querySelector("#answer5");
 	for (var x=0; x <objParts.length, x++) {
 		var ulNode = document.createElement("ul");
 		ulNode.textContent = objParts[x];
 		answer5div.appendChild(ulNode);
-	}															//This creates two ul elements containing titles and number of materials in the answer 5 div.
-
+	}															//At this point, I have created two ul elements containing titles and number of materials in the answer 5 div.
+	var answer5Titles = document.querySelector(".objTitles");
+	for (var x=0; x < )
 	var objPartsTitles = objParts.reduce(function(a,b) {
 		return a + b;
 	});
@@ -136,3 +153,4 @@ var filterMaterials = function (items) {
 		objTitles.appendChild(liNode);
 //	};)
 }
+*/
