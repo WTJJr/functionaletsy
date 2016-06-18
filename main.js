@@ -89,7 +89,7 @@ var answer4withtags = "<ul class=\"listheading\">Items made of wood:"+answer4+"<
 
 document.querySelector("#answer4").innerHTML = answer4withtags;
 
-// Which items are made of eight or more materials? Display the name, number of items and the items it is made of.
+// Question 5: Which items are made of eight or more materials? Display the name, number of items and the items it is made of.
 
 // Qty of 2 Groomsmen Gift - Stainless Steel Personalized Bottle Opener - NO Capcatcher has 9 materials:
 //   wall mount bottle opener
@@ -133,15 +133,30 @@ var filterMaterials = function (items) {
 	var taggedMaterialsArrays = arrayOfFilteredMaterialsTagger(filteredMaterialsArrays);
 	//At this point, I have one array containing the materials arrays of each 
 	//filtered object with all array items contained within <li> tags.
-
 	var answer5div = document.querySelector("#answer5");
 	for (var x=0; x <objParts.length; x++) {
 		var ulNode = document.createElement("ul");
 		ulNode.innerHTML = objParts[x] + taggedMaterialsArrays[x].join('');
 		answer5div.appendChild(ulNode);
 	};															//This for loop creates two ul elements containing titles and number of materials
-	//AND adds the corresponding taggedMaterialsArrays array to each ul element, having already joined the array together as a string,
+	//AND their corresponding taggedMaterialsArrays array-turned-string to each ul element,
 	//and then injects it into the answer 5 div.
 };
-
 filterMaterials(items); //calls the function.
+
+// Question 6: How many items were made by their sellers?
+// 18 were made by their sellers
+var selfMadeFilter = function(items){
+	var objectFilter = function (items){
+		return items.filter(function(object){
+			if (object.who_made == "i_did"){
+				return object;
+			};
+		});
+	}
+	var selfMade = objectFilter(items);
+	var answer6 = selfMade.length;
+	var answer6div = document.querySelector("#answer6");
+	answer6div.innerHTML = answer6 +" were made by their sellers.";
+};
+selfMadeFilter(items);
