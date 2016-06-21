@@ -86,16 +86,12 @@ p {
 
 ul {
 	font-weight: bold;
+	text-align: left;
 }
 
 ul li {
 	font-weight: normal;
 	text-align: left;
-	display:inline-block;
-}
-
-ul li::before {
-	content: "\00a0 * ";
 }
 
 .footercontainer {
