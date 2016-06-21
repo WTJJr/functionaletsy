@@ -33,18 +33,15 @@ var filterPrices = function(items) {
 	var filteredPrices = [];
 	items.forEach(function(object) {
 		if (14 <= object.price && object.price <= 18) {
-		filteredPrices.push(object.title);
+		filteredPrices.push("<li>"+object.title+"</li>");
 		};
 	});
-	var answer2 = filteredPrices.reduce(function(a,b) {
-		return a + " * " + b;
-	});
-	return answer2;
+	return filteredPrices.join("");
 };
 
 var answer2 = filterPrices(items);
 
-document.querySelector("#answer2").innerHTML = "<p class=\"ans2header\">These items cost between $14 and $18:</p>"+answer2;
+document.querySelector("#answer2").innerHTML = "<ul class=\"ans2header\">These items cost between $14 and $18:"+answer2+"</ul>";
 
 
 // Question 3: Which item has a "GBP" currency code? Display it's name and price.
